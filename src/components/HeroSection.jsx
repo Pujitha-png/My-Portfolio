@@ -28,7 +28,11 @@ function HeroSection({ isDark }) {
       transition={{ duration: 0.8, ease: 'easeOut' }}
       className="mx-auto max-w-4xl text-center"
     >
-      <p className="mb-5 text-sm font-semibold tracking-[0.22em] text-cyan-300 uppercase">
+      <p
+        className={`mb-5 text-sm font-semibold tracking-[0.22em] uppercase ${
+          isDark ? 'text-cyan-300' : 'text-orange-600'
+        }`}
+      >
         Software Portfolio
       </p>
       <h1 className={`text-4xl font-semibold tracking-tight sm:text-5xl lg:text-6xl ${isDark ? 'text-white' : 'text-slate-900'}`}>
@@ -47,11 +51,11 @@ function HeroSection({ isDark }) {
           smooth
           duration={500}
           offset={-80}
-          className={`cursor-pointer rounded-full px-7 py-3 text-sm font-semibold text-white shadow-lg transition hover:scale-105 ${
-            isDark
-              ? 'bg-gradient-to-r from-cyan-500 to-blue-600 shadow-cyan-900/35'
-              : 'bg-gradient-to-r from-blue-500 to-indigo-600 shadow-blue-900/20'
-          }`}
+            className={`cursor-pointer rounded-full px-7 py-3 text-sm font-semibold text-white shadow-lg transition hover:scale-105 ${
+              isDark
+                ? 'bg-gradient-to-r from-cyan-500 to-blue-600 shadow-cyan-900/35'
+                : 'bg-gradient-to-r from-orange-500 to-amber-600 shadow-orange-900/20'
+            }`}
         >
           View My Work
         </Link>
@@ -60,11 +64,11 @@ function HeroSection({ isDark }) {
           smooth
           duration={500}
           offset={-80}
-          className={`cursor-pointer rounded-full border px-7 py-3 text-sm font-semibold transition hover:-translate-y-0.5 ${
-            isDark
-              ? 'border-white/30 text-slate-100 hover:border-cyan-300 hover:text-cyan-200'
-              : 'border-slate-400 text-slate-700 hover:border-blue-500 hover:text-blue-600'
-          }`}
+            className={`cursor-pointer rounded-full border px-7 py-3 text-sm font-semibold transition hover:-translate-y-0.5 ${
+              isDark
+                ? 'border-white/30 text-slate-100 hover:border-cyan-300 hover:text-cyan-200'
+                : 'border-amber-400 text-amber-900 hover:border-orange-500 hover:text-orange-700'
+            }`}
         >
           Contact Me
         </Link>

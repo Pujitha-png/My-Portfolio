@@ -8,6 +8,9 @@ function Navbar({ isDark, onToggleTheme }) {
   const [open, setOpen] = useState(false)
 
   const closeMenu = () => setOpen(false)
+  const ThemeIcon = isDark ? FiMoon : FiSun
+  const activeThemeLabel = isDark ? 'Dark' : 'Light'
+  const nextThemeLabel = isDark ? 'light' : 'dark'
 
   return (
     <header
@@ -46,31 +49,31 @@ function Navbar({ isDark, onToggleTheme }) {
           ))}
           <button
             type="button"
-            aria-label={`Switch to ${isDark ? 'light' : 'dark'} theme`}
+            aria-label={`Active theme: ${activeThemeLabel}. Switch to ${nextThemeLabel} theme`}
             onClick={onToggleTheme}
             className={`inline-flex items-center gap-2 rounded-full border px-3 py-2 text-sm font-medium transition ${
               isDark
                 ? 'border-white/20 text-slate-100 hover:border-cyan-300 hover:text-cyan-200'
-                : 'border-slate-300 text-slate-700 hover:border-blue-500 hover:text-blue-600'
+                : 'border-amber-300 text-amber-900 hover:border-orange-500 hover:text-orange-700'
             }`}
           >
-            {isDark ? <FiSun /> : <FiMoon />}
-            {isDark ? 'Light' : 'Dark'}
+            <ThemeIcon />
+            {activeThemeLabel}
           </button>
         </div>
 
         <div className="flex items-center gap-2 md:hidden">
           <button
             type="button"
-            aria-label={`Switch to ${isDark ? 'light' : 'dark'} theme`}
+            aria-label={`Active theme: ${activeThemeLabel}. Switch to ${nextThemeLabel} theme`}
             onClick={onToggleTheme}
             className={`rounded-full border p-2 text-lg transition ${
               isDark
                 ? 'border-white/20 text-slate-100 hover:border-cyan-300 hover:text-cyan-200'
-                : 'border-slate-300 text-slate-700 hover:border-blue-500 hover:text-blue-600'
+                : 'border-amber-300 text-amber-900 hover:border-orange-500 hover:text-orange-700'
             }`}
           >
-            {isDark ? <FiSun /> : <FiMoon />}
+            <ThemeIcon />
           </button>
           <button
             type="button"
