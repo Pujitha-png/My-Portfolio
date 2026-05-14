@@ -1,8 +1,25 @@
+import { useState } from 'react'
 import { motion } from 'framer-motion'
 import SectionHeading from './SectionHeading'
 import { contactLinks } from '../data/content'
 
 function ContactSection() {
+  const [formData, setFormData] = useState({ name: '', email: '', message: '' })
+
+  const handleChange = (event) => {
+    const { name, value } = event.target
+    setFormData((previous) => ({ ...previous, [name]: value }))
+  }
+
+  const handleSubmit = (event) => {
+    event.preventDefault()
+    const subject = encodeURIComponent(`Portfolio contact from ${formData.name || 'Visitor'}`)
+    const body = encodeURIComponent(
+      `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`,
+    )
+    window.location.href = `mailto:pujitha0709@gmail.com?subject=${subject}&body=${body}`
+  }
+
   return (
     <section className="px-6 py-24 sm:px-8 lg:px-10">
       <div className="mx-auto max-w-5xl rounded-3xl border border-white/10 bg-gradient-to-b from-slate-900/80 to-slate-950/80 p-8 shadow-xl shadow-black/20 sm:p-10">
@@ -41,21 +58,32 @@ function ContactSection() {
           viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 0.55, ease: 'easeOut', delay: 0.12 }}
           className="mt-10 grid gap-4"
-          onSubmit={(event) => event.preventDefault()}
+          onSubmit={handleSubmit}
         >
           <input
             type="text"
+            name="name"
+            value={formData.name}
+            onChange={handleChange}
             placeholder="Your Name"
             className="rounded-xl border border-white/10 bg-slate-900/80 px-4 py-3 text-sm text-slate-100 outline-none transition focus:border-cyan-300"
           />
           <input
             type="email"
+            name="email"
+            value={formData.email}
+            onChange={handleChange}
             placeholder="Your Email"
+            required
             className="rounded-xl border border-white/10 bg-slate-900/80 px-4 py-3 text-sm text-slate-100 outline-none transition focus:border-cyan-300"
           />
           <textarea
             rows="4"
+            name="message"
+            value={formData.message}
+            onChange={handleChange}
             placeholder="Your Message"
+            required
             className="rounded-xl border border-white/10 bg-slate-900/80 px-4 py-3 text-sm text-slate-100 outline-none transition focus:border-cyan-300"
           />
           <button
