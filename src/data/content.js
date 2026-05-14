@@ -39,7 +39,7 @@ export const heroContent = {
   name: 'Pujita Nagalakshmi Kotha',
   title: 'Aspiring Software Developer | Full Stack Learner | DSA Enthusiast',
   education:
-    'B.Tech in Information Technology, Aditya College of Engineering and Technology, Surampalem (Batch 2023-2027).',
+    'B.Tech in Information Technology, Aditya College of Engineering and Technology, Surampalem.',
 }
 
 export const aboutContent = [

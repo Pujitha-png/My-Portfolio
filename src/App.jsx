@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { Element } from 'react-scroll'
 import Navbar from './components/Navbar'
 import HeroSection from './components/HeroSection'
@@ -14,12 +14,16 @@ function App() {
   const isDark = theme === 'dark'
   const toggleTheme = () => setTheme((previous) => (previous === 'dark' ? 'light' : 'dark'))
 
+  useEffect(() => {
+    document.documentElement.setAttribute('data-theme', theme)
+  }, [theme])
+
   const appClassName = useMemo(
     () =>
       `min-h-screen transition-colors duration-300 ${
         isDark
           ? 'bg-slate-950 text-slate-100'
-          : 'bg-slate-100 text-slate-900'
+          : 'bg-amber-50 text-slate-900'
       }`,
     [isDark],
   )
