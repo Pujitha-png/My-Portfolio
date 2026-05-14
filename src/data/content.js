@@ -40,6 +40,8 @@ export const heroContent = {
   title: 'Aspiring Software Developer | Full Stack Learner | DSA Enthusiast',
   tagline:
     'Computer Science student passionate about data structures, algorithms, Java development, and building practical full-stack web solutions.',
+  education:
+    'B.Tech in Information Technology, Aditya College of Engineering and Technology, Surampalem (Batch 2023-2027).',
 }
 
 export const aboutContent = [
