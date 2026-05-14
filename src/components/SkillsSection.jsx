@@ -11,7 +11,7 @@ const itemVariants = {
   },
 }
 
-function SkillsSection() {
+function SkillsSection({ isDark }) {
   return (
     <section className="px-6 py-24 sm:px-8 lg:px-10">
       <div className="mx-auto max-w-6xl">
@@ -19,6 +19,7 @@ function SkillsSection() {
           eyebrow="Skills"
           title="A growing toolkit for software development"
           description="Focused on core CS concepts, backend architecture, and modern web development practices."
+          isDark={isDark}
         />
 
         <motion.div
@@ -31,26 +32,32 @@ function SkillsSection() {
           {skillGroups.map((group) => {
             const GroupIcon = group.icon
             return (
-              <motion.article
-                key={group.title}
-                variants={itemVariants}
-                className="rounded-2xl border border-white/10 bg-slate-900/60 p-6 shadow-lg shadow-black/15"
-              >
-                <div className="mb-5 flex items-center gap-3">
-                  <span className="rounded-full bg-cyan-500/15 p-2 text-cyan-300">
-                    <GroupIcon />
-                  </span>
-                  <h3 className="text-lg font-semibold text-white">{group.title}</h3>
-                </div>
-                <ul className="space-y-3">
+                <motion.article
+                  key={group.title}
+                  variants={itemVariants}
+                  className={`rounded-2xl border p-6 shadow-lg ${
+                    isDark
+                      ? 'border-white/10 bg-slate-900/60 shadow-black/15'
+                      : 'border-slate-300 bg-white shadow-slate-300/45'
+                  }`}
+                >
+                  <div className="mb-5 flex items-center gap-3">
+                    <span className={`rounded-full p-2 ${isDark ? 'bg-cyan-500/15 text-cyan-300' : 'bg-blue-500/10 text-blue-600'}`}>
+                      <GroupIcon />
+                    </span>
+                    <h3 className={`text-lg font-semibold ${isDark ? 'text-white' : 'text-slate-900'}`}>{group.title}</h3>
+                  </div>
+                  <ul className="space-y-3">
                   {group.skills.map((skill) => {
                     const SkillIcon = skill.icon
                     return (
                       <li
                         key={skill.name}
-                        className="flex items-center gap-3 text-sm text-slate-300 transition hover:text-cyan-200"
+                        className={`flex items-center gap-3 text-sm transition ${
+                          isDark ? 'text-slate-300 hover:text-cyan-200' : 'text-slate-700 hover:text-blue-600'
+                        }`}
                       >
-                        <span className="text-cyan-300/90">
+                        <span className={isDark ? 'text-cyan-300/90' : 'text-blue-600'}>
                           <SkillIcon />
                         </span>
                         <span>{skill.name}</span>

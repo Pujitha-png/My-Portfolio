@@ -1,3 +1,4 @@
+import { useMemo, useState } from 'react'
 import { Element } from 'react-scroll'
 import Navbar from './components/Navbar'
 import HeroSection from './components/HeroSection'
@@ -9,30 +10,44 @@ import ContactSection from './components/ContactSection'
 import Footer from './components/Footer'
 
 function App() {
+  const [theme, setTheme] = useState('dark')
+  const isDark = theme === 'dark'
+  const toggleTheme = () => setTheme((previous) => (previous === 'dark' ? 'light' : 'dark'))
+
+  const appClassName = useMemo(
+    () =>
+      `min-h-screen transition-colors duration-300 ${
+        isDark
+          ? 'bg-slate-950 text-slate-100'
+          : 'bg-slate-100 text-slate-900'
+      }`,
+    [isDark],
+  )
+
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-100">
-      <Navbar />
+    <div className={appClassName}>
+      <Navbar isDark={isDark} onToggleTheme={toggleTheme} />
       <main>
         <Element name="home">
-          <HeroSection />
+          <HeroSection isDark={isDark} />
         </Element>
         <Element name="about">
-          <AboutSection />
+          <AboutSection isDark={isDark} />
         </Element>
         <Element name="skills">
-          <SkillsSection />
+          <SkillsSection isDark={isDark} />
         </Element>
         <Element name="projects">
-          <ProjectsSection />
+          <ProjectsSection isDark={isDark} />
         </Element>
         <Element name="profiles">
-          <ProfilesSection />
+          <ProfilesSection isDark={isDark} />
         </Element>
         <Element name="contact">
-          <ContactSection />
+          <ContactSection isDark={isDark} />
         </Element>
       </main>
-      <Footer />
+      <Footer isDark={isDark} />
     </div>
   )
 }
