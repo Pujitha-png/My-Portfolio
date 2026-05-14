@@ -59,6 +59,18 @@ function HeroSection({ isDark }) {
         >
           View My Work
         </Link>
+        <a
+          href="/Pujita_resume.pdf"
+          target="_blank"
+          rel="noopener noreferrer"
+          className={`cursor-pointer rounded-full border px-7 py-3 text-sm font-semibold transition hover:-translate-y-0.5 ${
+            isDark
+              ? 'border-cyan-300/40 text-cyan-200 hover:border-cyan-300 hover:text-cyan-100'
+              : 'border-orange-400 text-orange-700 hover:border-orange-500 hover:text-orange-800'
+          }`}
+        >
+          View Resume
+        </a>
         <Link
           to="contact"
           smooth
