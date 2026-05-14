@@ -3,7 +3,7 @@ import { motion } from 'framer-motion'
 import SectionHeading from './SectionHeading'
 import { contactLinks } from '../data/content'
 
-function ContactSection() {
+function ContactSection({ isDark }) {
   const [formData, setFormData] = useState({ name: '', email: '', message: '' })
 
   const handleChange = (event) => {
@@ -22,11 +22,18 @@ function ContactSection() {
 
   return (
     <section className="px-6 py-24 sm:px-8 lg:px-10">
-      <div className="mx-auto max-w-5xl rounded-3xl border border-white/10 bg-gradient-to-b from-slate-900/80 to-slate-950/80 p-8 shadow-xl shadow-black/20 sm:p-10">
+      <div
+        className={`mx-auto max-w-5xl rounded-3xl border bg-gradient-to-b p-8 shadow-xl sm:p-10 ${
+          isDark
+            ? 'border-white/10 from-slate-900/80 to-slate-950/80 shadow-black/20'
+            : 'border-slate-300 from-white to-slate-100 shadow-slate-300/45'
+        }`}
+      >
         <SectionHeading
           eyebrow="Contact"
           title="Let’s connect and build impactful software"
           description="I’m always open to collaborations, internships, and opportunities where I can learn and contribute."
+          isDark={isDark}
         />
 
         <div className="mt-10 grid gap-4 sm:grid-cols-3">
@@ -43,7 +50,11 @@ function ContactSection() {
                 viewport={{ once: true, amount: 0.2 }}
                 transition={{ duration: 0.45, ease: 'easeOut', delay: index * 0.08 }}
                 whileHover={{ y: -3 }}
-                className="flex items-center justify-center gap-2 rounded-full border border-white/20 px-4 py-3 text-sm font-semibold text-slate-100 transition hover:border-cyan-300 hover:text-cyan-200"
+                className={`flex items-center justify-center gap-2 rounded-full border px-4 py-3 text-sm font-semibold transition ${
+                  isDark
+                    ? 'border-white/20 text-slate-100 hover:border-cyan-300 hover:text-cyan-200'
+                    : 'border-slate-300 text-slate-700 hover:border-blue-500 hover:text-blue-600'
+                }`}
               >
                 <Icon />
                 {link.name}
@@ -66,7 +77,11 @@ function ContactSection() {
             value={formData.name}
             onChange={handleChange}
             placeholder="Your Name"
-            className="rounded-xl border border-white/10 bg-slate-900/80 px-4 py-3 text-sm text-slate-100 outline-none transition focus:border-cyan-300"
+            className={`rounded-xl border px-4 py-3 text-sm outline-none transition ${
+              isDark
+                ? 'border-white/10 bg-slate-900/80 text-slate-100 focus:border-cyan-300'
+                : 'border-slate-300 bg-white text-slate-900 focus:border-blue-500'
+            }`}
           />
           <input
             type="email"
@@ -75,7 +90,11 @@ function ContactSection() {
             onChange={handleChange}
             placeholder="Your Email"
             required
-            className="rounded-xl border border-white/10 bg-slate-900/80 px-4 py-3 text-sm text-slate-100 outline-none transition focus:border-cyan-300"
+            className={`rounded-xl border px-4 py-3 text-sm outline-none transition ${
+              isDark
+                ? 'border-white/10 bg-slate-900/80 text-slate-100 focus:border-cyan-300'
+                : 'border-slate-300 bg-white text-slate-900 focus:border-blue-500'
+            }`}
           />
           <textarea
             rows="4"
@@ -84,11 +103,19 @@ function ContactSection() {
             onChange={handleChange}
             placeholder="Your Message"
             required
-            className="rounded-xl border border-white/10 bg-slate-900/80 px-4 py-3 text-sm text-slate-100 outline-none transition focus:border-cyan-300"
+            className={`rounded-xl border px-4 py-3 text-sm outline-none transition ${
+              isDark
+                ? 'border-white/10 bg-slate-900/80 text-slate-100 focus:border-cyan-300'
+                : 'border-slate-300 bg-white text-slate-900 focus:border-blue-500'
+            }`}
           />
           <button
             type="submit"
-            className="w-fit rounded-full bg-gradient-to-r from-violet-500 to-blue-600 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-indigo-950/35 transition hover:scale-105"
+            className={`w-fit rounded-full bg-gradient-to-r px-6 py-3 text-sm font-semibold text-white shadow-lg transition hover:scale-105 ${
+              isDark
+                ? 'from-violet-500 to-blue-600 shadow-indigo-950/35'
+                : 'from-blue-500 to-indigo-600 shadow-blue-900/20'
+            }`}
           >
             Send Message
           </button>

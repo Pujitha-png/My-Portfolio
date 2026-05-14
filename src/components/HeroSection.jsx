@@ -6,7 +6,7 @@ import { heroContent } from '../data/content'
 
 const MOBILE_BREAKPOINT_QUERY = '(max-width: 639px)'
 
-function HeroSection() {
+function HeroSection({ isDark }) {
   const [isMobile, setIsMobile] = useState(() =>
     typeof window !== 'undefined' ? window.matchMedia(MOBILE_BREAKPOINT_QUERY).matches : false
   )
@@ -31,14 +31,13 @@ function HeroSection() {
       <p className="mb-5 text-sm font-semibold tracking-[0.22em] text-cyan-300 uppercase">
         Software Portfolio
       </p>
-      <h1 className="text-4xl font-semibold tracking-tight text-white sm:text-5xl lg:text-6xl">
+      <h1 className={`text-4xl font-semibold tracking-tight sm:text-5xl lg:text-6xl ${isDark ? 'text-white' : 'text-slate-900'}`}>
         {heroContent.name}
       </h1>
-      <p className="mt-6 text-base leading-relaxed text-slate-200 sm:text-lg">{heroContent.title}</p>
-      <p className="mx-auto mt-5 max-w-3xl text-sm leading-relaxed text-slate-300 sm:text-base">
-        {heroContent.tagline}
+      <p className={`mt-6 text-base leading-relaxed sm:text-lg ${isDark ? 'text-slate-200' : 'text-slate-700'}`}>
+        {heroContent.title}
       </p>
-      <p className="mx-auto mt-3 max-w-3xl text-sm leading-relaxed text-slate-300 sm:text-base">
+      <p className={`mx-auto mt-3 max-w-3xl text-sm leading-relaxed sm:text-base ${isDark ? 'text-slate-300' : 'text-slate-600'}`}>
         {heroContent.education}
       </p>
 
@@ -48,7 +47,11 @@ function HeroSection() {
           smooth
           duration={500}
           offset={-80}
-          className="cursor-pointer rounded-full bg-gradient-to-r from-cyan-500 to-blue-600 px-7 py-3 text-sm font-semibold text-white shadow-lg shadow-cyan-900/35 transition hover:scale-105"
+          className={`cursor-pointer rounded-full px-7 py-3 text-sm font-semibold text-white shadow-lg transition hover:scale-105 ${
+            isDark
+              ? 'bg-gradient-to-r from-cyan-500 to-blue-600 shadow-cyan-900/35'
+              : 'bg-gradient-to-r from-blue-500 to-indigo-600 shadow-blue-900/20'
+          }`}
         >
           View My Work
         </Link>
@@ -57,7 +60,11 @@ function HeroSection() {
           smooth
           duration={500}
           offset={-80}
-          className="cursor-pointer rounded-full border border-white/30 px-7 py-3 text-sm font-semibold text-slate-100 transition hover:-translate-y-0.5 hover:border-cyan-300 hover:text-cyan-200"
+          className={`cursor-pointer rounded-full border px-7 py-3 text-sm font-semibold transition hover:-translate-y-0.5 ${
+            isDark
+              ? 'border-white/30 text-slate-100 hover:border-cyan-300 hover:text-cyan-200'
+              : 'border-slate-400 text-slate-700 hover:border-blue-500 hover:text-blue-600'
+          }`}
         >
           Contact Me
         </Link>
@@ -70,13 +77,17 @@ function HeroSection() {
       <div className="pointer-events-none absolute inset-0 -z-10">
         <motion.div
           aria-hidden="true"
-          className="absolute top-10 left-1/2 h-72 w-72 -translate-x-1/2 rounded-full bg-cyan-500/20 blur-3xl"
+          className={`absolute top-10 left-1/2 h-72 w-72 -translate-x-1/2 rounded-full blur-3xl ${
+            isDark ? 'bg-cyan-500/20' : 'bg-cyan-400/25'
+          }`}
           animate={{ opacity: [0.25, 0.45, 0.25], scale: [1, 1.08, 1] }}
           transition={{ duration: 7, repeat: Infinity, ease: 'easeInOut' }}
         />
         <motion.div
           aria-hidden="true"
-          className="absolute right-0 bottom-0 h-80 w-80 rounded-full bg-violet-500/20 blur-3xl"
+          className={`absolute right-0 bottom-0 h-80 w-80 rounded-full blur-3xl ${
+            isDark ? 'bg-violet-500/20' : 'bg-violet-400/25'
+          }`}
           animate={{ opacity: [0.2, 0.38, 0.2], scale: [1, 1.12, 1] }}
           transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
         />

@@ -2,7 +2,7 @@ import { motion } from 'framer-motion'
 import SectionHeading from './SectionHeading'
 import { codingProfiles } from '../data/content'
 
-function ProfilesSection() {
+function ProfilesSection({ isDark }) {
   return (
     <section className="px-6 py-24 sm:px-8 lg:px-10">
       <div className="mx-auto max-w-6xl">
@@ -10,6 +10,7 @@ function ProfilesSection() {
           eyebrow="Coding Profiles"
           title="Practice platforms I actively use"
           description="Track my coding consistency and progress across competitive programming and interview-prep platforms."
+          isDark={isDark}
         />
 
         <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
@@ -26,9 +27,13 @@ function ProfilesSection() {
                 viewport={{ once: true, amount: 0.25 }}
                 transition={{ duration: 0.45, ease: 'easeOut', delay: index * 0.08 }}
                 whileHover={{ y: -4, scale: 1.02 }}
-                className="flex items-center gap-4 rounded-2xl border border-white/10 bg-slate-900/65 p-5 text-slate-100 transition hover:border-cyan-300/45"
+                className={`flex items-center gap-4 rounded-2xl border p-5 transition ${
+                  isDark
+                    ? 'border-white/10 bg-slate-900/65 text-slate-100 hover:border-cyan-300/45'
+                    : 'border-slate-300 bg-white text-slate-900 hover:border-blue-500/45'
+                }`}
               >
-                <span className="rounded-xl bg-cyan-500/15 p-3 text-xl text-cyan-300">
+                <span className={`rounded-xl p-3 text-xl ${isDark ? 'bg-cyan-500/15 text-cyan-300' : 'bg-blue-500/10 text-blue-600'}`}>
                   <Icon />
                 </span>
                 <span className="font-medium">{profile.name}</span>

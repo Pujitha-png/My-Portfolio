@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion'
 
-function SectionHeading({ eyebrow, title, description }) {
+function SectionHeading({ eyebrow, title, description, isDark }) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 28 }}
@@ -12,9 +12,13 @@ function SectionHeading({ eyebrow, title, description }) {
       <p className="mb-3 text-sm font-semibold tracking-[0.24em] text-cyan-300 uppercase">
         {eyebrow}
       </p>
-      <h2 className="text-3xl font-semibold tracking-tight text-white sm:text-4xl">{title}</h2>
+      <h2 className={`text-3xl font-semibold tracking-tight sm:text-4xl ${isDark ? 'text-white' : 'text-slate-900'}`}>
+        {title}
+      </h2>
       {description ? (
-        <p className="mt-4 text-base leading-relaxed text-slate-300">{description}</p>
+        <p className={`mt-4 text-base leading-relaxed ${isDark ? 'text-slate-300' : 'text-slate-600'}`}>
+          {description}
+        </p>
       ) : null}
     </motion.div>
   )
