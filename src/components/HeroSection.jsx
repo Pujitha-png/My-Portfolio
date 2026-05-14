@@ -1,11 +1,28 @@
 import { motion } from 'framer-motion'
+import { useEffect, useState } from 'react'
 import { Link } from 'react-scroll'
 import { Parallax } from 'react-scroll-parallax'
 import { heroContent } from '../data/content'
 
+const MOBILE_BREAKPOINT_QUERY = '(max-width: 639px)'
+
 function HeroSection() {
+  const [isMobile, setIsMobile] = useState(() =>
+    typeof window !== 'undefined' ? window.matchMedia(MOBILE_BREAKPOINT_QUERY).matches : false
+  )
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return
+
+    const mediaQuery = window.matchMedia(MOBILE_BREAKPOINT_QUERY)
+    const updateViewport = () => setIsMobile(mediaQuery.matches)
+    mediaQuery.addEventListener('change', updateViewport)
+
+    return () => mediaQuery.removeEventListener('change', updateViewport)
+  }, [])
+
   return (
-    <section className="relative overflow-hidden px-6 pt-24 pb-24 sm:px-8 sm:pt-32 lg:px-10 lg:pt-36">
+    <section className="relative overflow-hidden px-6 pt-20 pb-16 sm:px-8 sm:pt-32 sm:pb-24 lg:px-10 lg:pt-36">
       <div className="pointer-events-none absolute inset-0 -z-10">
         <motion.div
           aria-hidden="true"
@@ -21,7 +38,7 @@ function HeroSection() {
         />
       </div>
 
-      <Parallax translateY={[-20, 20]} className="w-full">
+      <Parallax disabled={isMobile} translateY={[-20, 20]} className="w-full">
         <motion.div
           initial={{ opacity: 0, y: 32 }}
           animate={{ opacity: 1, y: 0 }}
