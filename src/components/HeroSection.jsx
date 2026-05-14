@@ -21,7 +21,7 @@ function HeroSection() {
         />
       </div>
 
-      <Parallax translateY={[-20, 20]}>
+      <Parallax translateY={[-20, 20]} className="w-full">
         <motion.div
           initial={{ opacity: 0, y: 32 }}
           animate={{ opacity: 1, y: 0 }}
