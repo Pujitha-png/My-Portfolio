@@ -5,7 +5,7 @@ import { heroContent } from '../data/content'
 
 function HeroSection() {
   return (
-    <section className="relative overflow-hidden px-6 pt-36 pb-24 sm:px-8 lg:px-10">
+    <section className="relative overflow-hidden px-6 pt-24 pb-24 sm:px-8 sm:pt-32 lg:px-10 lg:pt-36">
       <div className="pointer-events-none absolute inset-0 -z-10">
         <motion.div
           aria-hidden="true"
