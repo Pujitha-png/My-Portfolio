@@ -8,13 +8,13 @@ function HeroSection() {
     <section className="relative overflow-hidden px-6 pt-36 pb-24 sm:px-8 lg:px-10">
       <div className="pointer-events-none absolute inset-0 -z-10">
         <motion.div
-          aria-hidden
+          aria-hidden="true"
           className="absolute top-10 left-1/2 h-72 w-72 -translate-x-1/2 rounded-full bg-cyan-500/20 blur-3xl"
           animate={{ opacity: [0.25, 0.45, 0.25], scale: [1, 1.08, 1] }}
           transition={{ duration: 7, repeat: Infinity, ease: 'easeInOut' }}
         />
         <motion.div
-          aria-hidden
+          aria-hidden="true"
           className="absolute right-0 bottom-0 h-80 w-80 rounded-full bg-violet-500/20 blur-3xl"
           animate={{ opacity: [0.2, 0.38, 0.2], scale: [1, 1.12, 1] }}
           transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
