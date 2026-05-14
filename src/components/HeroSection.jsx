@@ -4,15 +4,17 @@ import { Link } from 'react-scroll'
 import { Parallax } from 'react-scroll-parallax'
 import { heroContent } from '../data/content'
 
+const MOBILE_BREAKPOINT_QUERY = '(max-width: 639px)'
+
 function HeroSection() {
   const [isMobile, setIsMobile] = useState(() =>
-    typeof window !== 'undefined' ? window.matchMedia('(max-width: 639px)').matches : false
+    typeof window !== 'undefined' ? window.matchMedia(MOBILE_BREAKPOINT_QUERY).matches : false
   )
 
   useEffect(() => {
     if (typeof window === 'undefined') return
 
-    const mediaQuery = window.matchMedia('(max-width: 639px)')
+    const mediaQuery = window.matchMedia(MOBILE_BREAKPOINT_QUERY)
     const updateViewport = () => setIsMobile(mediaQuery.matches)
     mediaQuery.addEventListener('change', updateViewport)
 
