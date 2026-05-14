@@ -140,16 +140,19 @@ export const codingProfiles = [
   {
     name: 'CodeChef',
     icon: SiCodechef,
+    color: '#5b4638',
     href: 'https://www.codechef.com/users/puji_1005',
   },
   {
     name: 'HackerRank',
     icon: SiHackerrank,
+    color: '#00EA64',
     href: 'https://www.hackerrank.com/profile/pujitha0709',
   },
   {
     name: 'LeetCode',
     icon: SiLeetcode,
+    color: '#FFA116',
     href: 'https://leetcode.com/u/Pujitha_Kotha/',
   },
 ]

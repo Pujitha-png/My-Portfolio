@@ -33,7 +33,7 @@ function ProfilesSection({ isDark }) {
                     : 'border-slate-300 bg-white text-slate-900 hover:border-blue-500/45'
                 }`}
               >
-                <span className={`rounded-xl p-3 text-xl ${isDark ? 'bg-cyan-500/15 text-cyan-300' : 'bg-blue-500/10 text-blue-600'}`}>
+                <span className={`rounded-xl p-3 text-xl ${isDark ? 'bg-cyan-500/15' : 'bg-blue-500/10'}`} style={{ color: profile.color }}>
                   <Icon />
                 </span>
                 <span className="font-medium">{profile.name}</span>
