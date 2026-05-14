@@ -60,7 +60,7 @@ function HeroSection({ isDark }) {
           View My Work
         </Link>
         <a
-          href="/Pujita_resume.pdf"
+          href={`${import.meta.env.BASE_URL}Pujita_resume.pdf`}
           target="_blank"
           rel="noopener noreferrer"
           className={`cursor-pointer rounded-full border px-7 py-3 text-sm font-semibold transition hover:-translate-y-0.5 ${
