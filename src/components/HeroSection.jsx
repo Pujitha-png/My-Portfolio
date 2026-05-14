@@ -8,6 +8,8 @@ function HeroSection() {
   const [isMobile, setIsMobile] = useState(false)
 
   useEffect(() => {
+    if (typeof window === 'undefined') return
+
     const mediaQuery = window.matchMedia('(max-width: 639px)')
     const updateViewport = () => setIsMobile(mediaQuery.matches)
 
