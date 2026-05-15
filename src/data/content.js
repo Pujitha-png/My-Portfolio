@@ -9,7 +9,6 @@ import {
   FaTools,
 } from 'react-icons/fa'
 import {
-  SiClaude,
   SiCodechef,
   SiDocker,
   SiExpress,
@@ -90,7 +89,6 @@ export const skillGroups = [
       { name: 'Docker', icon: SiDocker },
       { name: 'ChatGPT', icon: FaCode },
       { name: 'GitHub Copilot', icon: SiGithub },
-      { name: 'Claude', icon: SiClaude },
     ],
   },
   {
