@@ -12,7 +12,8 @@ function ScrollToTopButton({ isDark }) {
     const updateVisibility = () => {
       const scrollPosition = window.innerHeight + window.scrollY
       const pageHeight = document.documentElement.scrollHeight
-      setIsVisible(pageHeight - scrollPosition <= VISIBILITY_THRESHOLD)
+      const isScrollablePage = pageHeight - window.innerHeight > VISIBILITY_THRESHOLD
+      setIsVisible(isScrollablePage && pageHeight - scrollPosition <= VISIBILITY_THRESHOLD)
       isFramePending = false
     }
 
@@ -25,8 +26,8 @@ function ScrollToTopButton({ isDark }) {
       window.requestAnimationFrame(updateVisibility)
     }
 
-    updateVisibility()
     window.addEventListener('scroll', handleScroll)
+    window.requestAnimationFrame(updateVisibility)
 
     return () => {
       window.removeEventListener('scroll', handleScroll)
