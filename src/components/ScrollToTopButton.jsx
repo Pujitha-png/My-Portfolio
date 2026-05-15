@@ -8,6 +8,8 @@ function ScrollToTopButton({ isDark }) {
 
   useEffect(() => {
     let isFramePending = false
+    let frameId = null
+    let initialCheckTimeoutId = null
 
     const updateVisibility = () => {
       const scrollPosition = window.innerHeight + window.scrollY
@@ -15,6 +17,7 @@ function ScrollToTopButton({ isDark }) {
       const isScrollablePage = pageHeight - window.innerHeight > VISIBILITY_THRESHOLD
       setIsVisible(isScrollablePage && pageHeight - scrollPosition <= VISIBILITY_THRESHOLD)
       isFramePending = false
+      frameId = null
     }
 
     const handleScroll = () => {
@@ -23,14 +26,20 @@ function ScrollToTopButton({ isDark }) {
       }
 
       isFramePending = true
-      window.requestAnimationFrame(updateVisibility)
+      frameId = window.requestAnimationFrame(updateVisibility)
     }
 
     window.addEventListener('scroll', handleScroll)
-    window.requestAnimationFrame(updateVisibility)
+    initialCheckTimeoutId = window.setTimeout(handleScroll, 0)
 
     return () => {
       window.removeEventListener('scroll', handleScroll)
+      if (initialCheckTimeoutId !== null) {
+        window.clearTimeout(initialCheckTimeoutId)
+      }
+      if (frameId !== null) {
+        window.cancelAnimationFrame(frameId)
+      }
     }
   }, [])
 
