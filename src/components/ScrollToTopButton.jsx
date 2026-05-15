@@ -1,17 +1,31 @@
 import { useEffect, useState } from 'react'
 import { FiArrowUp } from 'react-icons/fi'
 
+const VISIBILITY_THRESHOLD = 200
+
 function ScrollToTopButton({ isDark }) {
   const [isVisible, setIsVisible] = useState(false)
 
   useEffect(() => {
-    const handleScroll = () => {
+    let isFramePending = false
+
+    const updateVisibility = () => {
       const scrollPosition = window.innerHeight + window.scrollY
       const pageHeight = document.documentElement.scrollHeight
-      setIsVisible(pageHeight - scrollPosition <= 200)
+      setIsVisible(pageHeight - scrollPosition <= VISIBILITY_THRESHOLD)
+      isFramePending = false
     }
 
-    handleScroll()
+    const handleScroll = () => {
+      if (isFramePending) {
+        return
+      }
+
+      isFramePending = true
+      window.requestAnimationFrame(updateVisibility)
+    }
+
+    updateVisibility()
     window.addEventListener('scroll', handleScroll)
 
     return () => {
