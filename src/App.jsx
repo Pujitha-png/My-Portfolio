@@ -8,6 +8,7 @@ import ProjectsSection from './components/ProjectsSection'
 import ProfilesSection from './components/ProfilesSection'
 import ContactSection from './components/ContactSection'
 import Footer from './components/Footer'
+import ScrollToTopButton from './components/ScrollToTopButton'
 
 function App() {
   const [theme, setTheme] = useState('dark')
@@ -51,6 +52,7 @@ function App() {
           <ContactSection isDark={isDark} />
         </Element>
       </main>
+      <ScrollToTopButton isDark={isDark} />
       <Footer isDark={isDark} />
     </div>
   )
