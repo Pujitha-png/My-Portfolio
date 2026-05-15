@@ -30,8 +30,8 @@ function ScrollToTopButton({ isDark }) {
     }
 
     window.addEventListener('scroll', handleScroll)
-    frameId = window.requestAnimationFrame(updateVisibility)
     isFramePending = true
+    frameId = window.requestAnimationFrame(updateVisibility)
 
     return () => {
       window.removeEventListener('scroll', handleScroll)
